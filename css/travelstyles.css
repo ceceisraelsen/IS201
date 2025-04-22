@@ -1,0 +1,79 @@
+/* General Page Styling */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f4e1ef;
+    color: #333;
+    line-height: 1.6;
+  }
+  
+  /* Header Styling */
+  .header {
+    background-image: url('assets/img/a0fab8e2-ac4d-4ef3-ad28-71db788191b1.png');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+  }
+  
+  .header h1 {
+    font-size: 2.8em;
+    margin-bottom: 10px;
+  }
+  
+  .header p {
+    font-size: 1.2em;
+  }
+  
+  /* Content Area */
+  .content {
+    padding: 30px 20px;
+    max-width: 800px;
+    margin: auto;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+  
+  /* Image Styling */
+  .travel-img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+  
+  /* Back Button */
+  .nav-button {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 1000;
+  }
+  
+  .button {
+    padding: 8px 14px;
+    background-color: #343a40;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: normal;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #495057;
+  }
+  
+  /* Video Block */
+  .video-block {
+    margin: 20px 0;
+    text-align: center;
+  }
+  
+  h2 {
+    margin-top: 40px;
+    color: #158e4b;
+  }
+  

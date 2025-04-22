@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guess the Country</title>
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      text-align: center;
+      background-color: #e0f7fa;
+      padding: 40px;
+    }
+    .game-box {
+      background: white;
+      max-width: 500px;
+      margin: auto;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 60%;
+      margin: 15px 0;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    #result {
+      font-weight: bold;
+      margin-top: 20px;
+    }
+    .hint {
+      font-style: italic;
+      color: #666;
+      margin-top: 15px;
+    }
+    .back-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+    .back-button a {
+      padding: 8px 14px;
+      background-color: #343a40;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    .back-button a:hover {
+      background-color: #495057;
+    }
+  </style>
+</head>
+<body>
+  <div class="back-button">
+    <a href="travel.html">← Back to Travel Page</a>
+  </div>
+
+  <div class="game-box">
+    <h1>✈️ Guess the Country!</h1>
+    <p>I'm thinking of one of these countries: England, Italy, France, Costa Rica, Canada, or Mexico. Can you guess which one based on the hint?</p>
+    <div id="hint" class="hint"></div>
+    <input type="text" id="guess" placeholder="Enter your guess here">
+    <br>
+    <button onclick="checkGuess()">Submit</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    const countryHints = {
+      "england": "This country is famous for tea, Big Ben, and red phone booths.",
+      "italy": "This country is known for pasta, ancient ruins, and gondolas.",
+      "france": "This country is home to the Eiffel Tower and famous pastries.",
+      "costa rica": "This Central American country is famous for rainforests and ziplining.",
+      "canada": "This country is known for maple syrup, hockey, and the CN Tower.",
+      "mexico": "This country is famous for tacos, mariachi music, and beaches."
+    };
+
+    const countries = Object.keys(countryHints);
+    let remainingCountries = [...countries];
+    let currentAnswer = "";
+
+    function newQuestion() {
+      if (remainingCountries.length === 0) {
+        document.getElementById("hint").textContent = "You've guessed all the countries! 🎉";
+        document.getElementById("result").textContent = "Refresh the page to play again.";
+        return;
+      }
+      const index = Math.floor(Math.random() * remainingCountries.length);
+      currentAnswer = remainingCountries[index];
+      document.getElementById("hint").textContent = countryHints[currentAnswer];
+      document.getElementById("result").textContent = "";
+      document.getElementById("guess").value = "";
+    }
+
+    function checkGuess() {
+      const userGuess = document.getElementById("guess").value.toLowerCase().trim();
+      const result = document.getElementById("result");
+      if (userGuess === currentAnswer) {
+        result.textContent = "🎉 Correct! Let's try another.";
+        result.style.color = "green";
+        remainingCountries = remainingCountries.filter(c => c !== currentAnswer);
+        setTimeout(newQuestion, 1500);
+      } else {
+        result.textContent = "❌ Nope! Try again.";
+        result.style.color = "red";
+      }
+    }
+
+    newQuestion();
+  </script>
+</body>
+</html>
